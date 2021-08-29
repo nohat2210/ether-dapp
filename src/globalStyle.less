@@ -1,0 +1,343 @@
+@import '/src/shared/utils/class_utility.less';
+
+@sizes: {
+  mobile: 320px;
+  tablet: 768px;
+  desktop: 1024px;
+};
+
+@colors: {
+  primary: #3a5599;
+  primary-2: #00587c;
+  error: #d73a49;
+  warning: #ffb812;
+  success: #6cc000;
+  white: #fff;
+  black: #000;
+  black-2: #06070d;
+  black-3: #333;
+};
+
+@font: 'Roboto', 'HelveticaNeue', 'Helvetica Neue', sans-serif;
+@bg-pimary-hover: @colors[primary-2];
+
+//---------------Default-----------//
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0 solid rgba(229, 231, 235, 1);
+}
+
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: @font;
+  color: @colors[black-3];
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: larger;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+ul {
+  list-style: none;
+}
+
+p::first-letter {
+  text-transform: uppercase;
+}
+
+//-----------Link-----------//
+a {
+  &:hover,
+  &:active {
+    color: inherit;
+  }
+  text-decoration: none;
+  color: inherit;
+}
+
+.field_link {
+  color: @colors[primary];
+  font-size: 14px;
+  &:hover {
+    color: @bg-pimary-hover;
+    text-decoration: underline;
+  }
+}
+
+//--------------Label-------------//
+label {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+//<<-----------Input----------->>//
+
+input {
+  .padding-x(1);
+  outline: 2px solid transparent;
+  border: 1px solid @colors[black-2];
+  height: 40px;
+  width: 100%;
+  &:hover,
+  &:focus {
+    border: 2px solid @colors[primary];
+  }
+}
+
+.form__field {
+  .margin-bottom(5);
+}
+
+.field__input {
+  .relative;
+  font-size: 0.875rem;
+}
+
+.field_name_input {
+  max-width: 150px;
+  input {
+    max-width: 100%;
+  }
+}
+
+.input__icon {
+  background-color: transparent;
+  .absolute;
+  top: 22%;
+  right: 2%;
+}
+
+//<<------------Button----------->>//
+
+button {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  display: block;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn {
+  padding: 6px 16px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.02857em;
+  text-transform: capitalize;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn__primary {
+  .btn;
+  background-color: @colors[primary];
+  color: @colors[white];
+  &:hover {
+    color: @colors[white];
+    background-color: @bg-pimary-hover !important;
+  }
+}
+
+.btn__field {
+  height: 40px;
+}
+
+[role='button'] {
+  .btn;
+  background-color: @colors[primary];
+  color: @colors[white];
+  &:hover {
+    color: @colors[white];
+    background-color: @bg-pimary-hover;
+  }
+}
+
+//-------------Avatar-----------------//
+
+.avatar {
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.avatar > img {
+  border-radius: inherit;
+  .block;
+  .object-cover;
+  width: 100%;
+  height: 100%;
+}
+
+//<----------------IconSVG-------------->//
+
+.icon {
+  cursor: pointer;
+}
+
+path {
+  fill: currentColor;
+}
+
+.input__icon > .icon > path {
+  fill: @colors[primary];
+  &:hover {
+    fill: @bg-pimary-hover !important;
+  }
+}
+
+//------------------Navbar----------------//
+.header {
+  z-index: 100;
+  background-color: @colors[white];
+  top: 0px;
+}
+
+.header > nav {
+  height: inherit;
+}
+
+.nav__menu {
+  font-weight: 500;
+}
+
+.nav__btn {
+  padding: 16px 22px;
+}
+
+//--------------Footer--------------//
+.footer__main {
+  background-color: @colors[black-2];
+  color: @colors[white];
+}
+
+//----------Landing-Page-----------//
+
+.landing {
+  &__img {
+    height: 35rem;
+    object-fit: cover;
+    object-position: 30% 80%;
+    top: 0px;
+    left: 0px;
+  }
+  &__btn {
+    text-transform: uppercase !important;
+    height: 5rem;
+    width: 10rem;
+  }
+}
+
+//-------------Auth-Layout-------------//
+
+.auth_layout__wrapper {
+  .block;
+  .h-full;
+}
+
+.auth_content__box {
+  .absolute;
+  top: 40%;
+  left: 50%;
+  width: 360px;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 2px 5px 0 rgb(51 62 73 / 10%);
+  padding: 8px 24px;
+}
+
+//------------Toast - Message--------------//
+#toast {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 999;
+}
+
+.toast {
+  .flex;
+  .items-center;
+  background-color: @colors[white];
+  border-left: 4px solid;
+  box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%),
+    0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+  .padding-y(2);
+  color: @colors[black-3];
+  // animation: slideInLeft ease 0.3s, fadeOut linear 1s 2s forwards;
+  &__icon {
+    .mx-2;
+  }
+  &__body {
+    flex-grow: 1;
+  }
+  min-width: 200px;
+  max-width: 260px;
+  &__msg {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
+
+.message-success {
+  border-color: @colors[success];
+  .toast__icon {
+    color: @colors[success];
+  }
+}
+.message-error {
+  border-color: @colors[error];
+  .toast__icon {
+    color: @colors[error];
+  }
+}
+.message-warning {
+  border-color: @colors[warning];
+  .toast__icon {
+    color: @colors[warning];
+  }
+}
+.message-info {
+  border-color: @colors[primary];
+  .toast__icon {
+    color: @colors[primary];
+  }
+}
+
+// @keyframes slideInLeft {
+//   from {
+//     opacity: 0;
+//     transform: translateX(calc(100% + 32px));
+//   }
+//   to {
+//     opacity: 1;
+//     transform: translateX(0);
+//   }
+// }
+
+// @keyframes fadeOut {
+//   to {
+//     opacity: 0;
+//   }
+// }
