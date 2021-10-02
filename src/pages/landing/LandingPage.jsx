@@ -11,7 +11,6 @@ function LandingPage() {
   return (
     <DefaultLayout>
       <div className="wrapper__content">
-        <div aria-hidden="true" style={{ height: '56px' }}></div>
         <img
           src={LandingImage}
           alt="silk-road"

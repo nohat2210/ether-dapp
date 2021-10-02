@@ -1,12 +1,12 @@
-import React, { Supense, lazy } from 'react';
+import React, { Suspense, lazy } from 'react';
 import Loading from 'shared/components/Loading';
 
-const loadable = importFunc => {
+const loadable = (importFunc, { fallback } = { fallback: <Loading /> }) => {
   const LazyComponent = lazy(() => importFunc);
-  return (
-    <Supense fallback={<Loading />}>
-      <LazyComponent />
-    </Supense>
+  return props => (
+    <Suspense fallback={fallback}>
+      <LazyComponent {...props} />
+    </Suspense>
   );
 };
 

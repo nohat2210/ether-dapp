@@ -2,7 +2,6 @@ import React from 'react';
 import { getToken } from 'core/token';
 import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
 function GuardRoute({ isPrivate = false, ...rest }) {
   const token = getToken();
   if (!token && isPrivate) {

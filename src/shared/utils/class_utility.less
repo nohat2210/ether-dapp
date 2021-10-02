@@ -33,9 +33,32 @@
   padding-right: @rem * @numb;
 }
 //<--------------------------->//
+.p-2 {
+  .padding(2);
+}
 
-.pt-4 {
+.p-4 {
   .padding(4);
+}
+
+.py-8 {
+  .padding-y(8);
+}
+
+.py-10 {
+  .padding-y(10);
+}
+
+.px-5 {
+  .padding-x(5);
+}
+
+.px-6 {
+  .padding-x(6);
+}
+
+.px-10 {
+  .padding-x(10);
 }
 
 //----------------------Margin----------------------//
@@ -70,6 +93,13 @@
   margin-right: @rem * @numb;
 }
 //<<------------------------->>//
+.m-auto {
+  margin: auto;
+}
+.m-2 {
+  .margin(2);
+}
+
 .mx-2 {
   .margin-x(2);
 }
@@ -81,8 +111,28 @@
   .margin-y(2);
 }
 
+.mt-4 {
+  .margin-top(4);
+}
+
+.mt-20 {
+  .margin-top(20);
+}
+
+.mb-2 {
+  .margin-bottom(2);
+}
+
 .mb-5 {
   .margin-bottom(5);
+}
+
+.mb-10 {
+  .margin-bottom(10);
+}
+
+.ml-2 {
+  .margin-left(2);
 }
 
 .ml-10 {
@@ -93,16 +143,45 @@
   .margin-right(2);
 }
 
+.mr-3 {
+  .margin-right(3);
+}
+
 .mr-5 {
   .margin-right(5);
 }
 
 //---------------------Width-------------------//
+
+.w-px(@numb) {
+  width: @px * @numb;
+}
+
+.w-rem(@numb) {
+  width: @rem * @numb;
+}
+
 .w-full {
   width: 100%;
 }
 
+.w-88px {
+  .w-px(88);
+}
+
+.w-120px {
+  .w-px(120);
+}
+
 //---------------------Height-------------------//
+
+.h-px(@numb) {
+  height: @px * @numb;
+}
+
+.h-rem(@numb) {
+  height: @rem * @numb;
+}
 
 .min-h-screen {
   min-height: 100vh;
@@ -115,6 +194,11 @@
 .h-full {
   height: 100%;
 }
+
+.h-40px {
+  .h-px(40);
+}
+
 //-------------------Display---------------------//
 
 .block {
@@ -129,8 +213,20 @@
   display: flex;
 }
 
+.inline-flex {
+  display: inline-flex;
+}
+
 .flex-1 {
   flex: 1 1 0%;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 .flex-col {
@@ -151,8 +247,22 @@
   justify-content: center;
 }
 
+.justify-between {
+  justify-content: space-between;
+}
+
 .items-center {
   align-items: center;
+}
+
+//-----------------Float---------------------//
+
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
 }
 
 //------------------Position------------------//
@@ -167,6 +277,10 @@
 
 .absolute {
   position: absolute;
+}
+
+.sticky {
+  position: sticky;
 }
 
 //-----------------Text-Align--------------//
@@ -212,6 +326,23 @@
   }
 }
 
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(calc(100% + 32px));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
 //---------------Opacity-------------//
 
 .opacity-25 {
@@ -224,10 +355,12 @@
 
 //------------visible-------------//
 
-#shown {
+.visible {
   visibility: visible;
 }
 
-#hidde {
+.hidden {
   visibility: hidden;
 }
+
+//------------Text-Font------------//

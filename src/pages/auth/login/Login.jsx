@@ -1,4 +1,5 @@
 import React from 'react';
+import { useToast } from 'shared/hooks/useToast';
 import useRoutes from 'shared/hooks/useRoutes';
 import { useDispatch } from 'react-redux';
 import { unwrapResult } from '@reduxjs/toolkit';
@@ -9,14 +10,15 @@ import { loginAuth } from '../authSlice';
 function Login() {
   const { history } = useRoutes();
   const dispatch = useDispatch();
+  const { toast } = useToast();
   const handleSubmit = ({ email, password }) => {
     dispatch(loginAuth({ email, password }))
       .then(unwrapResult)
       .then(() => {
         history.push('/');
-        // shownSuccess('login success');
+        toast.success('Login Success');
       })
-      .catch(error => console.log(error));
+      .catch(err => toast.error(err));
   };
   return (
     <AuthLayout>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Field } from 'formik';
-import SVGIcon from './SVGIcon';
+import SVGIcon from '../SVGIcon';
 import PropTypes from 'prop-types';
 
 const InputField = ({
@@ -27,7 +27,7 @@ const InputField = ({
             {label}
           </label>
         )}
-        <div type="input" className="field__input">
+        <div className="field__input">
           <Field
             autoComplete="off"
             className="flex-1"
@@ -54,14 +54,16 @@ const InputField = ({
   } else {
     return (
       <div className={`form__field ${className || ''}`}>
-        <span className="field__label">
-          {label && <label htmlFor={name}>{label}</label>}
-        </span>
-        <span type="input" className="field__input">
+        {label && (
+          <label className="field__label" htmlFor={name}>
+            {label}
+          </label>
+        )}
+        <div className="field field__input">
           <Field
             autoComplete="off"
             className="flex-1"
-            id={name}
+            id={name}s
             type={type}
             disabled={disabled}
             name={name}
@@ -72,7 +74,7 @@ const InputField = ({
               <SVGIcon icon={icon} />
             </span>
           )}
-        </span>
+        </div>
       </div>
     );
   }
@@ -88,9 +90,9 @@ InputField.defautlProps = {
 
 InputField.propTypes = {
   icon: PropTypes.string,
+  label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  label: PropTypes.string,
+  type: PropTypes.string,
   className: PropTypes.string,
   disabled: PropTypes.bool,
   renderIcon: PropTypes.bool,

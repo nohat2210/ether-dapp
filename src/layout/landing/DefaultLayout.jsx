@@ -1,25 +1,30 @@
 import React from 'react';
 import { Logo } from 'shared/components/common';
+import useRoutes from 'shared/hooks/useRoutes';
 import MenuContent from './MenuContent';
 import PropTypes from 'prop-types';
 import CurrentUser from './CurrentUser';
-
 function DefaultLayout({ children }) {
+  const { history } = useRoutes();
   return (
     <main>
-      <header className="header fixed w-full">
-        <nav className="flex center-between">
-          <div className="ml-10 mx-5">
+      <div className="header">
+        <div className="nav flex center-between">
+          <div
+            onClick={() => {
+              history.push('/');
+            }}
+            to="/"
+            className="ml-10 mx-5"
+          >
             <Logo />
           </div>
           <MenuContent />
           <CurrentUser />
-        </nav>
-      </header>
+        </div>
+      </div>
       <div className="min-h-screen">{children}</div>
-      <footer className="footer__main">
-        Ether Dapp &copy; Developement by Phi
-      </footer>
+      <div className="footer__main">Ether Dapp &copy; Developement by Phi</div>
     </main>
   );
 }

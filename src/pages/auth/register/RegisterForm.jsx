@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Formik, Form } from 'formik';
 import { Button } from 'shared/components/common';
-import InputField from 'shared/components/InputField';
+import FormikControl from 'shared/components/customs-field/FormikControl';
 
 function RegisterForm({ onSubmit }) {
   const isLoading = useSelector(state => state.auth.loading);
@@ -20,14 +20,16 @@ function RegisterForm({ onSubmit }) {
       {() => (
         <Form>
           <div className="flex center-between">
-            <InputField
+            <FormikControl
+              control="input"
               className="field_name_input"
               type="text"
               name="firstName"
               placeholder="First name"
               label="first name"
             />
-            <InputField
+            <FormikControl
+              control="input"
               className="field_name_input"
               type="text"
               name="lastName"
@@ -35,36 +37,37 @@ function RegisterForm({ onSubmit }) {
               label="last name"
             />
           </div>
-          <InputField
+          <FormikControl
+            control="input"
             type="email"
             name="email"
             placeholder="Email"
             label="email"
           />
-          <InputField
+          <FormikControl
+            control="input"
             renderIcon
             type="password"
             name="password"
             placeholder="Password"
             label="Password"
           />
-          <InputField
+          <FormikControl
+            control="input"
             renderIcon
             type="password"
             name="confirmPassword"
             placeholder="Confirm password"
             label="Confirm password"
           />
-          <div className="form-group">
-            <Button
-              className="btn__field w-full my-2"
-              loading={isLoading}
-              htmlType="submit"
-              type="primary"
-            >
-              register
-            </Button>
-          </div>
+          <Button
+            className="btn__field w-full my-2"
+            loading={isLoading}
+            htmlType="submit"
+            type="primary"
+          >
+            register
+          </Button>
         </Form>
       )}
     </Formik>

@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import authApi from 'api/auth';
-import { setToken } from 'core/token';
+import { setAvatar, setCurrentUser } from 'core/currentUser';
+import { setAccessToken, setRefreshToken, setToken } from 'core/token';
+import { avatarList } from 'shared/utils/imageLibary';
 
 export const registerAuth = createAsyncThunk(
   'auth/register',
@@ -24,8 +26,15 @@ export const loginAuth = createAsyncThunk(
   async ({ email, password }, { rejectWithValue }) => {
     try {
       const response = await authApi.login({ email, password });
-      setToken(response.data.token);
-      return response.data;
+      setToken(response.data.accessToken);
+      setCurrentUser(response.data.user);
+      const { accessToken, refreshToken } = response.data;
+      setAccessToken(accessToken);
+      setRefreshToken(refreshToken);
+      const randomAvatar =
+        avatarList[Math.floor(Math.random() * avatarList.length)];
+      setAvatar(randomAvatar);
+      return response.data.user;
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -36,7 +45,6 @@ const authSlice = createSlice({
   name: 'auth',
   initialState: {
     success: false,
-    isLoggedIn: false,
     user: null,
     loading: false,
   },
@@ -57,8 +65,7 @@ const authSlice = createSlice({
     },
     [loginAuth.fulfilled]: (state, { payload }) => {
       state.loading = false;
-      state.isLoggedIn = payload.isLoggedIn;
-      state.user = payload.user;
+      state.user = payload;
     },
     [loginAuth.rejected]: state => {
       state.loading = false;

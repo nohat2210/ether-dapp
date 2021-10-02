@@ -12,6 +12,14 @@ import { ReactComponent as SuccessSVG } from 'assets/svgs/success.svg';
 import { ReactComponent as WarningSVG } from 'assets/svgs/warning.svg';
 import { ReactComponent as InfoSVG } from 'assets/svgs/info.svg';
 import { ReactComponent as ErrorSVG } from 'assets/svgs/erroricon.svg';
+import { ReactComponent as FeatherSVG } from 'assets/svgs/feather-solid.svg';
+import { ReactComponent as UserSVG } from 'assets/svgs/user.svg';
+import { ReactComponent as UserLineSVG } from 'assets/svgs/user-line.svg';
+import { ReactComponent as ViewSVG } from 'assets/svgs/view.svg';
+import { ReactComponent as BagSVG } from 'assets/svgs/Bag.svg';
+import { ReactComponent as BellSVG } from 'assets/svgs/bell.svg';
+import { ReactComponent as PlusSVG } from 'assets/svgs/icplus.svg';
+import { ReactComponent as MinusSVG } from 'assets/svgs/icminus.svg';
 
 const SVGIcon = ({ icon, width = 20, height = 20 }) => {
   const SVGS = {
@@ -41,6 +49,18 @@ const SVGIcon = ({ icon, width = 20, height = 20 }) => {
       <WarningSVG width={width} height={height} aria-hidden="true" />
     ),
     'error-icon': <ErrorSVG width={width} height={height} aria-hidden="true" />,
+    'feather-icon': (
+      <FeatherSVG width={width} height={height} aria-hidden="true" />
+    ),
+    'user-icon': <UserSVG width={width} height={height} aria-hidden="true" />,
+    'user-line-icon': (
+      <UserLineSVG width={width} height={height} aria-hidden="true" />
+    ),
+    'view-icon': <ViewSVG width={width} height={height} aria-hidden="true" />,
+    'bag-icon': <BagSVG width={width} height={height} aria-hidden="true" />,
+    'bell-icon': <BellSVG width={width} height={height} aria-hidden="true" />,
+    'plus-icon': <PlusSVG width={width} height={height} aria-hidden="true" />,
+    'minus-icon': <MinusSVG width={width} height={height} aria-hidden="true" />,
   };
   return <>{SVGS[icon]}</>;
 };

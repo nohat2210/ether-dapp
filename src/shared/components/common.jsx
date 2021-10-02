@@ -1,25 +1,25 @@
 import React from 'react';
 import SVGIcon from './SVGIcon';
 import PropTypes from 'prop-types';
-import { number } from 'prop-types';
 
 //-------------------BUTTON------------//
 
 export const Button = ({
-  htmlType,
+  htmlType = 'button',
   type,
   onClick,
   children,
   icon,
   className,
   loading = false,
+  disabled,
 }) => {
   return (
     <button
-      disabled={loading}
+      disabled={loading || disabled}
       type={htmlType}
       onClick={onClick}
-      className={`btn btn__${type} ${className || ''}`}
+      className={`btn ${type && `btn__${type}`} ${className || ''}`}
     >
       {icon && <SVGIcon icon={icon} />}
       {loading ? <SVGIcon icon="loading-icon" /> : children}
@@ -29,6 +29,7 @@ export const Button = ({
 
 Button.propTypes = {
   loading: PropTypes.bool,
+  disabled: PropTypes.bool,
   htmlType: PropTypes.string,
   type: PropTypes.string,
   onClick: PropTypes.func,
@@ -61,7 +62,14 @@ Logo.propTypes = {
 
 //-------------AVATAR---------------//
 
-export const Avatar = ({ title = 'User', src, icon, className, size = 32 }) => {
+export const Avatar = ({
+  title = 'User',
+  src,
+  icon,
+  className,
+  size = 32,
+  onClick,
+}) => {
   if (icon)
     <span
       className={`avatar ${className || ''}`}
@@ -72,6 +80,7 @@ export const Avatar = ({ title = 'User', src, icon, className, size = 32 }) => {
     </span>;
   return (
     <span
+      onClick={onClick}
       className={`avatar ${className || ''}`}
       style={{ width: size, height: size }}
       title={title}
@@ -86,5 +95,6 @@ Avatar.propTypes = {
   className: PropTypes.string,
   title: PropTypes.string,
   icon: PropTypes.string,
-  size: number,
+  size: PropTypes.number,
+  onClick: PropTypes.func,
 };

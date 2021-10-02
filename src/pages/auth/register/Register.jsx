@@ -2,12 +2,14 @@ import AuthLayout from 'layout/auth/AuthLayout';
 import { useDispatch } from 'react-redux';
 import { unwrapResult } from '@reduxjs/toolkit';
 import { useHistory } from 'react-router';
+import { useToast } from 'shared/hooks/useToast';
 import React from 'react';
 import RegisterForm from './RegisterForm';
 import { registerAuth } from '../authSlice';
 
 function Register() {
   const dispatch = useDispatch();
+  const { toast } = useToast();
   const history = useHistory();
   const handleSubmit = ({
     firstName,
@@ -20,14 +22,12 @@ function Register() {
       dispatch(registerAuth({ firstName, lastName, email, password }))
         .then(unwrapResult)
         .then(() => {
-          history.push('/');
-          console.log('Register success');
+          history.push('/login');
+          toast.success('Register success');
         })
-        .catch(error => {
-          console.log(error);
-        });
+        .catch(err => toast.error(err));
     } else {
-      console.log('Your password and confirm password not match!');
+      toast.error('Your password and confirm password not match!');
     }
   };
   return (

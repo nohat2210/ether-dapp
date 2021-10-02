@@ -1,6 +1,7 @@
+import authApi from 'api/auth';
 import axios from 'axios';
 import qs from 'qs';
-import { getToken } from './token';
+import { getToken, setAccessToken } from './token';
 
 const request = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
@@ -14,25 +15,26 @@ request.interceptors.request.use(
     if (token) {
       config.headers.authorization = `Bearer ${token}`;
     }
-    // Do something before request is sent
     return config;
   },
   function (error) {
-    // Do something with request error
-    return Promise.reject(error);
+    return Promise.reject(error.response || error.message);
   }
 );
 
-// Add a response interceptor
 request.interceptors.response.use(
   function (response) {
-    // Any status code that lie within the range of 2xx cause this function to trigger
-    // Do something with response data
     return response;
   },
   function (error) {
-    // Any status codes that falls outside the range of 2xx cause this function to trigger
-    // Do something with response error
+    const token = getToken();
+    if (token && error?.response?.data?.statusCode === 401) {
+      return authApi.refreshToken().then(response => {
+        if (response?.data?.statusCode === 200) {
+          setAccessToken(response.data.accessToken);
+        }
+      });
+    }
     return Promise.reject(error);
   }
 );

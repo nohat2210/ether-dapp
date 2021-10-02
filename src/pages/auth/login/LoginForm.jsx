@@ -4,7 +4,7 @@ import { Formik, Form } from 'formik';
 import { Link } from 'react-router-dom';
 import { Button } from 'shared/components/common';
 import { loginSchema } from 'core/validate';
-import InputField from 'shared/components/InputField';
+import FormikControl from 'shared/components/customs-field/FormikControl';
 
 function LoginForm({ onSubmit }) {
   const isLoading = useSelector(state => state.auth.loading);
@@ -19,36 +19,36 @@ function LoginForm({ onSubmit }) {
     >
       {() => (
         <Form>
-          <InputField
+          <FormikControl
+            control="input"
             name="email"
             type="email"
             label="email"
             placeholder="Email"
           />
-          <InputField
+          <FormikControl
+            control="input"
             name="password"
             type="password"
             label="password"
             placeholder="Password"
             renderIcon
           />
-          <div>
-            <Link to="/forgot-password" className="field_link">
-              Forgot password?
-            </Link>
-            <Button
-              className="btn__field w-full my-2"
-              loading={isLoading}
-              htmlType="submit"
-              type="primary"
-            >
-              log in
-            </Button>
-          </div>
-          <div className="text-center">
-            <span className="mr-2" style={{ fontSize: '14px' }}>
+          <Link to="/forgot-password" className="field_link">
+            Forgot password?
+          </Link>
+          <Button
+            className="btn__field w-full my-2"
+            loading={isLoading}
+            htmlType="submit"
+            type="primary"
+          >
+            log in
+          </Button>
+          <div className="flex center2">
+            <p className="mr-2" style={{ fontSize: '14px' }}>
               Not a member?
-            </span>
+            </p>
             <Link to="/register" className="field_link font-semibold">
               Register
             </Link>
