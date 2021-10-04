@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import GuardRoute from 'shared/routes/GuardRoute';
 import Page404 from 'pages/Page404';
-import Test from './Test';
 import ToastProvider from 'store/contexts/ToastProvider';
 import ModalProvider from 'store/contexts/ModalProvider';
 import loadable from 'shared/utils/loadable';
@@ -82,8 +81,6 @@ function App() {
                 import('./pages/user/product/view-product/EditProduct')
               )}
             />
-            <Route path="/test" exact component={Test} />
-
             <Route path="*" exact component={Page404} />
           </Switch>
         </ModalProvider>
