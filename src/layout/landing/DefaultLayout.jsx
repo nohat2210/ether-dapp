@@ -4,6 +4,7 @@ import useRoutes from 'shared/hooks/useRoutes';
 import MenuContent from './MenuContent';
 import PropTypes from 'prop-types';
 import CurrentUser from './CurrentUser';
+
 function DefaultLayout({ children }) {
   const { history } = useRoutes();
   return (
