@@ -10,42 +10,40 @@ function PostProductForm({ onSubmit }) {
   const { categories } = useGetCategories();
   return (
     <Formik initialValues={initialValues} onSubmit={onSubmit}>
-      {() => (
-        <Form className="products__form">
-          <FormikControl
-            control="input"
-            type="text"
-            name="name"
-            label="product name"
-          />
-          <FormikControl
-            options={categories}
-            control="select"
-            name="category"
-            label="category"
-            defaultSelected="Select a category"
-          />
-          <FormikControl
-            control="textarea"
-            name="description"
-            label="description"
-          />
-          <FormikControl
-            control="input"
-            type="number"
-            name="price"
-            label="price"
-          />
-          <div className="flex float-right">
-            <Button className="mr-2 h-40px" htmlType="reset" type="default">
-              clear
-            </Button>
-            <Button className="h-40px" htmlType="submit" type="primary">
-              post
-            </Button>
-          </div>
-        </Form>
-      )}
+      <Form className="products__form">
+        <FormikControl
+          control="input"
+          type="text"
+          name="name"
+          label="product name"
+        />
+        <FormikControl
+          options={categories}
+          control="select"
+          name="category"
+          label="category"
+          defaultSelected="Select a category"
+        />
+        <FormikControl
+          control="textarea"
+          name="description"
+          label="description"
+        />
+        <FormikControl
+          control="input"
+          type="number"
+          name="price"
+          label="price"
+        />
+        <div className="flex float-right">
+          <Button className="mr-2 h-40px" htmlType="reset" type="default">
+            clear
+          </Button>
+          <Button className="h-40px" htmlType="submit" type="primary">
+            post
+          </Button>
+        </div>
+      </Form>
     </Formik>
   );
 }

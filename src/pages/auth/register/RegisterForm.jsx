@@ -17,59 +17,57 @@ function RegisterForm({ onSubmit }) {
       }}
       onSubmit={onSubmit}
     >
-      {() => (
-        <Form>
-          <div className="flex center-between">
-            <FormikControl
-              control="input"
-              className="field_name_input"
-              type="text"
-              name="firstName"
-              placeholder="First name"
-              label="first name"
-            />
-            <FormikControl
-              control="input"
-              className="field_name_input"
-              type="text"
-              name="lastName"
-              placeholder="Last name"
-              label="last name"
-            />
-          </div>
+      <Form>
+        <div className="flex center-between">
           <FormikControl
             control="input"
-            type="email"
-            name="email"
-            placeholder="Email"
-            label="email"
+            className="field_name_input"
+            type="text"
+            name="firstName"
+            placeholder="First name"
+            label="first name"
           />
           <FormikControl
             control="input"
-            renderIcon
-            type="password"
-            name="password"
-            placeholder="Password"
-            label="Password"
+            className="field_name_input"
+            type="text"
+            name="lastName"
+            placeholder="Last name"
+            label="last name"
           />
-          <FormikControl
-            control="input"
-            renderIcon
-            type="password"
-            name="confirmPassword"
-            placeholder="Confirm password"
-            label="Confirm password"
-          />
-          <Button
-            className="btn__field w-full my-2"
-            loading={isLoading}
-            htmlType="submit"
-            type="primary"
-          >
-            register
-          </Button>
-        </Form>
-      )}
+        </div>
+        <FormikControl
+          control="input"
+          type="email"
+          name="email"
+          placeholder="Email"
+          label="email"
+        />
+        <FormikControl
+          control="input"
+          renderIcon
+          type="password"
+          name="password"
+          placeholder="Password"
+          label="Password"
+        />
+        <FormikControl
+          control="input"
+          renderIcon
+          type="password"
+          name="confirmPassword"
+          placeholder="Confirm password"
+          label="Confirm password"
+        />
+        <Button
+          className="btn__field w-full my-2"
+          loading={isLoading}
+          htmlType="submit"
+          type="primary"
+        >
+          register
+        </Button>
+      </Form>
     </Formik>
   );
 }

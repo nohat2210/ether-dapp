@@ -63,7 +63,8 @@ const InputField = ({
           <Field
             autoComplete="off"
             className="flex-1"
-            id={name}s
+            id={name}
+            s
             type={type}
             disabled={disabled}
             name={name}
@@ -80,7 +81,7 @@ const InputField = ({
   }
 };
 
-InputField.defautlProps = {
+InputField.defaultProps = {
   renderIcon: false,
   className: '',
   type: 'text',

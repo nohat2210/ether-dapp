@@ -17,44 +17,42 @@ function LoginForm({ onSubmit }) {
       validationSchema={loginSchema}
       onSubmit={onSubmit}
     >
-      {() => (
-        <Form>
-          <FormikControl
-            control="input"
-            name="email"
-            type="email"
-            label="email"
-            placeholder="Email"
-          />
-          <FormikControl
-            control="input"
-            name="password"
-            type="password"
-            label="password"
-            placeholder="Password"
-            renderIcon
-          />
-          <Link to="/forgot-password" className="field_link">
-            Forgot password?
+      <Form>
+        <FormikControl
+          control="input"
+          name="email"
+          type="email"
+          label="email"
+          placeholder="Email"
+        />
+        <FormikControl
+          control="input"
+          name="password"
+          type="password"
+          label="password"
+          placeholder="Password"
+          renderIcon
+        />
+        <Link to="/forgot-password" className="field_link">
+          Forgot password?
+        </Link>
+        <Button
+          className="btn__field w-full my-2"
+          loading={isLoading}
+          htmlType="submit"
+          type="primary"
+        >
+          log in
+        </Button>
+        <div className="flex center2">
+          <p className="mr-2" style={{ fontSize: '14px' }}>
+            Not a member?
+          </p>
+          <Link to="/register" className="field_link font-semibold">
+            Register
           </Link>
-          <Button
-            className="btn__field w-full my-2"
-            loading={isLoading}
-            htmlType="submit"
-            type="primary"
-          >
-            log in
-          </Button>
-          <div className="flex center2">
-            <p className="mr-2" style={{ fontSize: '14px' }}>
-              Not a member?
-            </p>
-            <Link to="/register" className="field_link font-semibold">
-              Register
-            </Link>
-          </div>
-        </Form>
-      )}
+        </div>
+      </Form>
     </Formik>
   );
 }

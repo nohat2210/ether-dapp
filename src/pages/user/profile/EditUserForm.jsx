@@ -17,33 +17,31 @@ function EditUserForm({ profile, onSubmit }) {
       }}
       onSubmit={onSubmit}
     >
-      {() => (
-        <Form>
-          <FormikControl control="input" label="first name" name="firstName" />
-          <FormikControl control="input" label="last name" name="lastName" />
-          <FormikControl
-            control="input"
-            disabled
-            type="email"
-            label="email"
-            name="email"
-          />
-          <FormikControl
-            control="input"
-            type="date"
-            label="birthday"
-            name="birthday"
-          />
-          <Button
-            loading={isLoading}
-            className="h-40px"
-            htmlType="submit"
-            type="primary"
-          >
-            save
-          </Button>
-        </Form>
-      )}
+      <Form>
+        <FormikControl control="input" label="first name" name="firstName" />
+        <FormikControl control="input" label="last name" name="lastName" />
+        <FormikControl
+          control="input"
+          disabled
+          type="email"
+          label="email"
+          name="email"
+        />
+        <FormikControl
+          control="input"
+          type="date"
+          label="birthday"
+          name="birthday"
+        />
+        <Button
+          loading={isLoading}
+          className="h-40px"
+          htmlType="submit"
+          type="primary"
+        >
+          save
+        </Button>
+      </Form>
     </Formik>
   );
 }

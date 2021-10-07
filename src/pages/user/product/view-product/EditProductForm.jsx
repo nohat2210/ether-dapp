@@ -20,46 +20,44 @@ function EditProductForm({ product, onSubmit }) {
   return (
     <div>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        {() => (
-          <Form>
-            <FormikControl control="input" name="name" label="name product" />
-            <FormikControl
-              control="select"
-              defaultSelected="Select a category"
-              options={categories}
-              name="category"
-              label="category"
-            />
-            <FormikControl
-              control="textarea"
-              name="description"
-              label="descripton"
-            />
-            <FormikControl
-              control="input"
-              type="number"
-              name="price"
-              label="price"
-            />
-            <div className="flex">
-              <Button
-                loading={isLoading}
-                className="mr-2 h-40px"
-                type="primary"
-                htmlType="submit"
-              >
-                Update
-              </Button>
-              <Button
-                className="h-40px"
-                onClick={() => history.push(`/products/${product?._id}`)}
-                type="default"
-              >
-                back
-              </Button>
-            </div>
-          </Form>
-        )}
+        <Form>
+          <FormikControl control="input" name="name" label="name product" />
+          <FormikControl
+            control="select"
+            defaultSelected="Select a category"
+            options={categories}
+            name="category"
+            label="category"
+          />
+          <FormikControl
+            control="textarea"
+            name="description"
+            label="descripton"
+          />
+          <FormikControl
+            control="input"
+            type="number"
+            name="price"
+            label="price"
+          />
+          <div className="flex">
+            <Button
+              loading={isLoading}
+              className="mr-2 h-40px"
+              type="primary"
+              htmlType="submit"
+            >
+              Update
+            </Button>
+            <Button
+              className="h-40px"
+              onClick={() => history.push(`/products/${product?._id}`)}
+              type="default"
+            >
+              back
+            </Button>
+          </div>
+        </Form>
       </Formik>
     </div>
   );
