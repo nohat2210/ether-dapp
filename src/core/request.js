@@ -1,7 +1,7 @@
 import authApi from 'api/auth';
 import axios from 'axios';
 import qs from 'qs';
-import { getToken, setAccessToken } from './token';
+import { getRefreshToken, getToken, setAccessToken } from './token';
 
 const request = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
@@ -28,8 +28,9 @@ request.interceptors.response.use(
   },
   function (error) {
     const token = getToken();
+    const refreshToken = getRefreshToken();
     if (token && error?.response?.data?.statusCode === 401) {
-      return authApi.refreshToken().then(response => {
+      return authApi.refreshToken(refreshToken).then(response => {
         if (response?.data?.statusCode === 200) {
           setAccessToken(response.data.accessToken);
         }

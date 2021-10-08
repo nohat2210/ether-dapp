@@ -11,6 +11,7 @@ function UserProfile() {
   const profile = JSONParse(getCurrentUser());
   const defaultAvatar = getAvatar();
   const { history } = useRoutes();
+  console.log({ profile });
   return (
     <PrivateLayout>
       <h2 className="mb-10">My profile</h2>

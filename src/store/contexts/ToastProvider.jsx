@@ -7,9 +7,8 @@ const ToastProvider = ({ children }) => {
     visible: false,
     message: '',
     type: '',
-    duration: 3000,
+    duration: 0,
   });
-  const { visible, message, type, duration } = state;
   const show = ({ message, type, duration = 3000 }) => {
     setState({ visible: true, message, type, duration });
   };
@@ -33,6 +32,8 @@ const ToastProvider = ({ children }) => {
       show({ type: 'success', message, duration });
     },
   };
+
+  const { visible, message, type, duration } = state;
   useEffect(() => {
     if (visible === true) {
       setTimeout(() => setState({ visible: false }), duration + 1000);

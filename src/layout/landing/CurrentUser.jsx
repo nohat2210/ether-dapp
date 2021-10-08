@@ -18,21 +18,27 @@ import {
 import SVGIcon from 'shared/components/SVGIcon';
 import { JSONParse } from 'shared/utils/tool';
 import { removeSaveProduct } from 'core/saveProduct';
+import { useToast } from 'shared/hooks/useToast';
 
 const CurrentUser = () => {
   const token = getToken();
-  const refreshToken = getRefreshToken();
+  const { toast } = useToast();
   const profile = JSONParse(getCurrentUser());
+  const refreshToken = getRefreshToken();
   const defaultAvatar = getAvatar();
   const onLogout = async () => {
     if (token) {
-      removeAccessToken();
-      removeRefreshToken();
-      await authApi.logout(refreshToken);
-      removeToken(token);
-      removeCurrentUser(profile);
-      removeSaveProduct();
-      removeAvatar();
+      try {
+        removeAccessToken();
+        removeRefreshToken();
+        await authApi.logout(refreshToken);
+        removeToken();
+        removeCurrentUser();
+        removeSaveProduct();
+        removeAvatar();
+      } catch (error) {
+        toast.error(error);
+      }
     }
   };
   if (token) {
@@ -51,7 +57,6 @@ const CurrentUser = () => {
               Post product
             </Link>
             <Link
-              to="/"
               title="log out"
               className="nav__user-menu-item"
               onClick={onLogout}

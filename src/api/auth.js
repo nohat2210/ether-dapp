@@ -7,15 +7,15 @@ const authApi = {
   },
   logout: refreshToken => {
     const url = 'auth/logout';
-    return request.delete(url, { refreshToken });
+    return request.post(url, { refreshToken });
   },
   register: ({ firstName, lastName, email, password }) => {
     const url = 'auth/register';
     return request.post(url, { firstName, lastName, email, password });
   },
-  refreshToken: () => {
+  refreshToken: refreshToken => {
     const url = 'auth/refresh-token';
-    return request.post(url);
+    return request.post(url, { refreshToken });
   },
 };
 

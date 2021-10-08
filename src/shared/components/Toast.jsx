@@ -21,7 +21,7 @@ const typesToast = {
   },
 };
 
-const Toast = ({ type, message, trigger, duration = 3000 }) => {
+const Toast = ({ type, message, trigger, duration }) => {
   const delay = (duration / 1000).toFixed(2);
   if (trigger) {
     return (
